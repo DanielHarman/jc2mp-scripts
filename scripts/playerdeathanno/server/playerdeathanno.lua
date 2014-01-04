@@ -1,4 +1,3 @@
-
 on_player_death = function(args)
 	
 	print ("Debug: reason"..args.reason) --Debug line for checking for unknown death reasons
@@ -12,7 +11,7 @@ on_player_death = function(args)
 		4 - ??hitting the water??
 	]]
 	if args.reason == 0 then
-		death_reason = "natual causes."
+		death_reason = "natural causes."
 	elseif args.reason == 1 then
 		death_reason = "the great power of physics." 
 	elseif args.reason == 2 then
@@ -20,7 +19,7 @@ on_player_death = function(args)
 	elseif args.reason == 3 then
 		death_reason = "explosions."
 	elseif args.reason == 4 then
-		death_reason = "belly flopping."
+		death_reason = "hitting something hard.."
 	end
 
 
