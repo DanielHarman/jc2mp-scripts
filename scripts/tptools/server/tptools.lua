@@ -24,15 +24,15 @@ player_tp = function(args)
 
 		if #chat_string < 4 then
 			Chat:Send(args.player, "You need to enter 3 numbers", Color(200, 100,3))
-			
-	else then
+				
+		else 
 
-		local new_player_vector = Vector3(tonumber(chat_string[2]), tonumber(chat_string[3]), tonumber(chat_string[4]))
+			local new_player_vector = Vector3(tonumber(chat_string[2]), tonumber(chat_string[3]), tonumber(chat_string[4]))
 		
-		Chat:Send(args.player, "Teleporting you to " .. tostring(new_player_vector), Color(200, 100,3))
-		args.player:SetPosition(new_player_vector)
+			Chat:Send(args.player, "Teleporting you to " .. tostring(new_player_vector), Color(200, 100,3))
+			args.player:SetPosition(new_player_vector)
 
-		return
+		end
 
 	end
 
