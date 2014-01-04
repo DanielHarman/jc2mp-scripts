@@ -21,6 +21,8 @@ function gameload()
     Render:DrawText(Vector2(220,10), "You are connected to nimphina.co.uk", Color(255,255,255))
     Render:DrawText(Vector2(220,30), vvecString .. vvelString, Color(255,255,255))
     Render:DrawText(Vector2(220,50), "Player position " .. tostring(LocalPlayer:GetPosition()), Color(255,255,255))
+
+    Render:FillArea(Vector2(altitude, 600), Vector2(20, 600), Color(0,255,0))
     return true
 end
 
