@@ -16,7 +16,7 @@ function onrender()
 
     local vvelString = string.format("VVelocity %i", math.abs(vvel) * 3.6).."km/h"
 
-    print (tostring(Render.Height))
+    --print (tostring(Render.Height))
 
     Render:DrawText(Vector2(220,10), "You are connected to nimphina.co.uk", Color(255,255,255))
     Render:DrawText(Vector2(220,30), vvecString .. vvelString, Color(255,255,255))
