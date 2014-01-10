@@ -21,7 +21,7 @@ function onrender()
     Render:DrawText(Vector2(220,10), "You are connected to nimphina.co.uk", Color(255,255,255))
     Render:DrawText(Vector2(220,30), vvecString .. vvelString, Color(255,255,255))
     Render:DrawText(Vector2(220,50), "Player position " .. tostring(LocalPlayer:GetPosition()), Color(255,255,255))
-
+    Render:DrawText(Vector2(Render.Height -20, Render.Width -20), os.date("!%c"), Color(255,255,255), 10, 5)
 
 
     if altitude >= 0 then -- So we are working for postitve
@@ -29,13 +29,15 @@ function onrender()
             altitude = 3000
         end
         Render:FillArea(Vector2(Render.Width /64, Render.Height /1.02), Vector2(10, -altitude/20), Color(0,255,0)) --Draw meter bar
-        Render:FillArea(Vector2(Render.Width /128, Render.Height /1.02), Vector2(40, 1), Color(255,255,255)) -- Draw initial line at 0
-        Render:DrawText(Vector2(Render.Width /64 + 22, Render.Height /1.02 -10), tostring(0) .. "m", Color(255,255,255)) -- Write zero Km
 
-        for i=1,15 do -- Draw 15 lines
+        for i=0,15 do -- Draw 15 lines
             if i == 5 or i == 10 or i == 15 then --if these numbers (as they represent 1,2,3KM) draw a longer line and the number
                 Render:FillArea(Vector2(Render.Width /128, Render.Height /1.02 -i*10 ), Vector2(40, 1), Color(255,255,255))
-                Render:DrawText(Vector2(Render.Width /64 + 22, Render.Height /1.02 -i*10 -10), tostring(i/5) .. "km", Color(255,255,255))
+                if i == 0 then
+                    Render:DrawText(Vector2(Render.Width /64 + 22, Render.Height /1.02 -i*10 -10), tostring(0) .. "km", Color(255,255,255))
+                else
+                    Render:DrawText(Vector2(Render.Width /64 + 22, Render.Height /1.02 -i*10 -10), tostring(i/5) .. "km", Color(255,255,255))
+                end
             else
                 Render:FillArea(Vector2(Render.Width /128, Render.Height /1.02 -i*10 ), Vector2(20, 1), Color(255,255,255)) --Draw a smaller line
             end
@@ -46,11 +48,9 @@ function onrender()
     else -- This is for negative altitude
         --Do this bit later
         Render:FillArea(Vector2(Render.Width /64, Render.Height /1.02), Vector2(10, altitude), Color(255,0,0))
-        Render:FillArea(Vector2(Render.Width /128, Render.Height /1.02), Vector2(40, 1), Color(255,255,255))
-        Render:DrawText(Vector2(Render.Width /64 + 22, Render.Height /1.02 -10), tostring(0) .. "m", Color(255,255,255)) -- Write zero m
 
-        for i=1,10 do -- Draw 15 lines
-            if i == 5 or i == 10 then --if these numbers (as they represent 1,2,3KM) draw a longer line and the number
+        for i=0,10 do -- Draw 15 lines
+            if i == 0 or i == 5 or i == 10 then --if these numbers (as they represent 1,2,3KM) draw a longer line and the number
                 Render:FillArea(Vector2(Render.Width /128, Render.Height /1.02 -i*10 ), Vector2(40, 1), Color(255,255,255))
                 Render:DrawText(Vector2(Render.Width /64 + 22, Render.Height /1.02 -i*10 -10), tostring(i) .. "m", Color(255,255,255))
             else
